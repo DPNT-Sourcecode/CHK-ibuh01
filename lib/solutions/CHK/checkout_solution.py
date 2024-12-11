@@ -15,11 +15,17 @@ def apply_free_items(item_counts):
     ]
 
     for buy_item, buy_count, free_item, free_count in rules:
-        if buy_item in item_counts and free_item in item_counts:
+        if buy_item in item_counts:
             free_count = item_counts[buy_item] // buy_count
-            item_counts[free_item] = max(0, item_counts[free_item] - free_count)
+            if free_item != buy_item:
+                item_counts[free_item] = max(0, item_counts[free_item] - free_count)
+            else:
+                # should be at least pay free_count*buy_count as we are removing the free items
+                item_counts[buy_item] = max(item_counts[buy_item] - free_count, free_count*buy_count)
     
     return item_counts
+
+
 
 def checkout(skus):
 
@@ -61,7 +67,9 @@ def checkout(skus):
         return -1
     
     items_counts = Counter(skus)
+    items_counts = apply_free_items(items_counts)
 
+    
 
     # # handle E special offers
     # if 'E' in items_counts and 'B' in items_counts:
