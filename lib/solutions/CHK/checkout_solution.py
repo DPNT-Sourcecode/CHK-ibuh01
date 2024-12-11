@@ -3,8 +3,6 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-
-
 def checkout(skus):
 
     # Check for invalid input

@@ -28,3 +28,11 @@ def test_special_offer_b():
     assert checkout("BB") == 45
     assert checkout("BBB") == 75
     assert checkout("BBBB") == 90
+
+def test_special_offer_e():
+    assert checkout("EE") == 80
+    assert checkout("EEB") == 80 # B is free
+
+def test_combination_offers():
+    assert checkout("AAAAAEEB") == 280 # 200 + 80
+    
