@@ -2,6 +2,9 @@
 from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+
+
 def checkout(skus):
 
     # Check for invalid input
@@ -31,13 +34,16 @@ def checkout(skus):
     for item, count in items_counts.items():
         if item == 'A':
             fives = count // 5
-            remaining = count % 5
-            total += (fives * 200) + (remaining * prices[item])
+            remainder = count % 5
+            threes = remainder //3
+            singles = remainder % 3
+            total += (fives * 200) + (threes * 130) + (singles * 50)
         elif item == 'B':
             twos = count // 2
-            remaining = count % 2
-            total += (twos * 45) + (remaining * prices[item])
+            remainder = count % 2
+            total += (twos * 45) + (remainder * 30)
         else:
             total += count * prices[item]
 
     return total
+
