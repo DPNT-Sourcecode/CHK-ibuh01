@@ -25,6 +25,9 @@ def apply_free_items(item_counts):
     
     return item_counts
 
+def calculate_group_offers(item, count):
+    pass
+
 
 
 def checkout(skus):
@@ -69,7 +72,13 @@ def checkout(skus):
     items_counts = Counter(skus)
     items_counts = apply_free_items(items_counts)
 
-    
+    total = 0
+    for item, count in items_counts.items():
+        total += calculate_group_offers(item, count)
+    return total
+
+
+
 
     # # handle E special offers
     # if 'E' in items_counts and 'B' in items_counts:
@@ -100,4 +109,3 @@ def checkout(skus):
     #     else:
     #         total += count * prices[item]
 
-    return total
