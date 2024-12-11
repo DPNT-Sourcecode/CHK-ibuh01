@@ -14,7 +14,8 @@ def checkout(skus):
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10
     }
 
     # check if all items exist in price list
@@ -28,7 +29,13 @@ def checkout(skus):
         free_b_count = items_counts['E'] // 2
         # compare the removed B with the offer of 2B for 45 which is lower?  not possible as 2B only saves 15, so always remove B
         items_counts['B'] = max(0, items_counts['B'] - free_b_count)
-        
+    
+
+    # handle F special offers
+    if 'F' in items_counts:
+        f_count = items_counts['F']
+        free_f_count = f_count // 3
+        items_counts['F'] = max(0, items_counts['F'] - free_f_count)
 
     total = 0
 
