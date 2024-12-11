@@ -15,3 +15,14 @@ def test_single_item():
     assert checkout("C") == 20
     assert checkout("D") == 15
 
+def test_special_offer_a():
+    assert checkout("AAA") == 130
+    assert checkout("AAAA") == 180
+    assert checkout("AAAAAA") == 260
+
+def test_special_offer_b():
+    assert checkout("BB") == 45
+    assert checkout("BBB") == 75
+    assert checkout("BBBB") == 90
+    
+
