@@ -26,7 +26,9 @@ def checkout(skus):
     # handle E special offers
     if 'E' in items_counts and 'B' in items_counts:
         free_b_count = items_counts['E'] // 2
+        # compare the removed B with the offer of 2B for 45 which is lower?  not possible as 2B only saves 15, so always remove B
         items_counts['B'] = max(0, items_counts['B'] - free_b_count)
+        
 
     total = 0
 
