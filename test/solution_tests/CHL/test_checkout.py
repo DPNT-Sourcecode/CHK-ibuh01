@@ -24,5 +24,10 @@ def test_special_offer_b():
     assert checkout("BB") == 45
     assert checkout("BBB") == 75
     assert checkout("BBBB") == 90
+
+def test_combination_of_items():
+    assert checkout("ABCD") == 115
+    assert checkout("ABCDAA") == 195 # 130 + 30 + 20 + 15
+
     
 
