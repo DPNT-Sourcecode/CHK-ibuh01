@@ -51,9 +51,7 @@ def apply_free_items(item_counts):
                 item_counts[free_item] = max(0, item_counts[free_item] - free_count)
             else:
                 # should be at least pay free_count*buy_count as we are removing the free items
-                item_counts[buy_item] = max(
-                    item_counts[buy_item] - free_count, free_count * buy_count
-                )
+                item_counts[buy_item] =  max(0, item_counts[free_item] - free_count)
 
     return item_counts
 
@@ -104,3 +102,4 @@ def checkout(skus):
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
