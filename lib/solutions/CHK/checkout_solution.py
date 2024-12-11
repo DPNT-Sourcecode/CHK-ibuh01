@@ -21,18 +21,23 @@ def checkout(skus):
     
     items_counts = Counter(skus)
 
+    # handle E special offers
+    if 'E' in items_counts and 'B' in items_counts:
+        free_b_count = items_counts['E'] // 2
+        items_counts['B'] = max(0, items_counts['B'] - free_b_count)
+
     total = 0
 
     for item, count in items_counts.items():
         if item == 'A':
-            special_deals = count //3
-            remaining = count % 3
-            total += (special_deals * 130) + (remaining * prices[item])
+            fives = count // 5
+            remaining = count % 5
+            total += (fives * 200) + (remaining * prices[item])
         elif item == 'B':
-            special_deals = count //2
+            twos = count // 2
             remaining = count % 2
-            total += (special_deals * 45) + (remaining * prices[item])
+            total += (twos * 45) + (remaining * prices[item])
         else:
             total += count * prices[item]
-    
+
     return total
