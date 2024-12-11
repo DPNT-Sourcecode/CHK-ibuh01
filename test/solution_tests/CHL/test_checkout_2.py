@@ -1,4 +1,4 @@
-from lib.solutions.CHK.checkout_solution import checkout
+from lib.solutions.CHK.checkout_solution_2 import checkout
 
 
 def test_invalid_input():
