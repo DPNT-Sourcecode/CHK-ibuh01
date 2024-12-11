@@ -15,7 +15,8 @@ def checkout(skus):
         'A': 50,
         'B': 30,
         'C': 20,
-        'D': 15
+        'D': 15,
+        'E': 40
     }
 
     # check if all items exist in price list
@@ -46,4 +47,3 @@ def checkout(skus):
             total += count * prices[item]
 
     return total
-
