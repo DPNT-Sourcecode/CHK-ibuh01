@@ -1,5 +1,8 @@
-from lib.solutions.CHK import checkout_solution
+from lib.solutions.CHK.checkout_solution import checkout
 
 def test_invalid_input():
-    assert checkout_solution.checkout("x") == -1
+    assert checkout("x") == -1
+    assert checkout(" ") == -1
+    assert checkout("123") == -1
+    assert checkout(123) == -1
 
