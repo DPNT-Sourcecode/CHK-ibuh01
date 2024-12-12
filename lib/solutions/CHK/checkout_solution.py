@@ -74,6 +74,8 @@ def apply_mixed_group_offers(items_counts):
     for item in available_items[groups*3:]:
         remaining_items[item] = remaining_items.get(item, 0) + 1
 
+    print("remaining_items", remaining_items)
+
     # update items_counts
     for item in group_items:
         if item in items_counts:
@@ -82,6 +84,7 @@ def apply_mixed_group_offers(items_counts):
             else:
                 del items_counts[item]
 
+    print("items_counts", items_counts)
     return groups, items_counts
 
 
@@ -137,3 +140,4 @@ def checkout(skus):
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
