@@ -79,6 +79,10 @@ def test_error_cases():
     assert checkout("K") == 70
     assert checkout("S") == 20
     assert checkout("ABCDEFGHIJKLMNOPQRSTUVW") == 795
+    assert checkout("KK") == 120
+    assert checkout("KKK") == 190
+    assert checkout("KKKK") == 240
+
 
 
 
