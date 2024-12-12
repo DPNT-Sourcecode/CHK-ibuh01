@@ -43,15 +43,20 @@ def test_special_offer_free_items():
     assert checkout("FF") == 20
     assert checkout("FFF") == 20
     assert checkout("FFFFFF") == 40
+    assert checkout("UUUU") == 120
 
 
 def test_combination_offers():
     assert checkout("AAAAAEEB") == 280  # 200 + 80
     assert checkout("FFFE") == 60  # F is free
+    assert checkout("VVVVV") == 220
 
+def test_two_combinations():
+    assert checkout("VVVVVAAA") == 350
 
 
 def test_edge_cases():
     assert checkout("AAAAAAAA") == 330  # 5A for 200 + 3A for 130
     assert checkout("EEEEBBB") == 190  # 4E = 160, two B free, pay for one B
+
 
