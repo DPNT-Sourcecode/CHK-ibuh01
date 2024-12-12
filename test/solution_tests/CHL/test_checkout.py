@@ -75,4 +75,11 @@ def test_two_combinations_mixed_group_offers():
     assert checkout("VVVVVAAASST") == 395
 
 
+def test_error_cases():
+    assert checkout("K") == 70
+    assert checkout("S") == 20
+    assert checkout("ABCDEFGHIJKLMNOPQRSTUVW") == 795
+
+
+
 
