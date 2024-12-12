@@ -64,14 +64,16 @@ def apply_mixed_group_offers(items_counts):
     for item in group_items:
         if item in items_counts:
             available_items.extend([item] * items_counts[item])
-    
+
     prices = get_prices()
 
-    available_items.sort(key=lambda x: (-prices[x],x))  # should be consistent in order to compute the remaining items
+    available_items.sort(
+        key=lambda x: (-prices[x], x)
+    )  # should be consistent in order to compute the remaining items
     groups = len(available_items) // 3
     remaining_items = {}
 
-    for item in available_items[groups*3:]:
+    for item in available_items[groups * 3 :]:
         remaining_items[item] = remaining_items.get(item, 0) + 1
 
     print("remaining_items", remaining_items)
@@ -137,9 +139,9 @@ def checkout(skus):
     total = 0
     total += groups * 45
 
-    
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
 
 
