@@ -3,6 +3,9 @@ from collections import Counter
 # skus = unicode string
 
 
+MIXED_GROUP_OFFER_PRICE = 45
+MIXED_GROUP_COUNT = 3
+
 def get_prices():
     return {
         "A": 50,
@@ -70,7 +73,7 @@ def apply_mixed_group_offers(items_counts):
     available_items.sort(
         key=lambda x: (-prices[x], x)
     )  # should be consistent in order to compute the remaining items
-    groups = len(available_items) // 3
+    groups = len(available_items) // MIXED_GROUP_COUNT
     remaining_items = {}
 
     for item in available_items[groups * 3 :]:
@@ -137,11 +140,12 @@ def checkout(skus):
     groups, items_counts = apply_mixed_group_offers(items_counts)
 
     total = 0
-    total += groups * 45
+    total += groups * MIXED_GROUP_OFFER_PRICE
 
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
 
 
 
