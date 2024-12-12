@@ -145,9 +145,3 @@ def checkout(skus):
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
-
-
-
-
-
-
