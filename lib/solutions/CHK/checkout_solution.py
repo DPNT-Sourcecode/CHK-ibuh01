@@ -57,7 +57,23 @@ def apply_free_items(item_counts):
 
 
 def apply_mixed_group_offers(items_counts):
-    pass
+    group_items = ["S", "T", "X", "Y", "Z"]
+
+    available_items = []
+
+    for item in group_items:
+        if item in items_counts:
+            available_items.extend([item] * items_counts[item])
+    
+    prices = get_prices()
+
+    available_items.sort(key=lambda x: (-prices[x],x))  # should be consistent
+    groups = len(available_items) // 3
+    
+
+    
+
+    return items_counts
 
 
 def calculate_group_offers(item, count):
@@ -109,4 +125,5 @@ def checkout(skus):
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
 
