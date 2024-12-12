@@ -57,6 +57,13 @@ def test_two_combinations():
     assert checkout("VVVVVAAA") == 350
 
 
+def test_mixed_group_offers():
+    assert checkout("SST") == 45
+    assert checkout("SSTS") == 65
+    assert checkout("SSTXYZ") == 90
+    assert checkout("SSTXYZX") == 107
+
+
 def test_edge_cases():
     assert checkout("AAAAAAAA") == 330  # 5A for 200 + 3A for 130
     assert checkout("EEEEBBB") == 190  # 4E = 160, two B free, pay for one B

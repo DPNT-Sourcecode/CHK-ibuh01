@@ -129,13 +129,11 @@ def checkout(skus):
 
     # handle mixed group offers
     groups, items_counts = apply_mixed_group_offers(items_counts)
-    total += groups * 45
 
     total = 0
+    total += groups * 45
+
+    
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
-
-
-
-
