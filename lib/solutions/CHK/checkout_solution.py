@@ -28,9 +28,9 @@ def get_prices():
         "U": 40,
         "V": 50,
         "W": 20,
-        "X": 90,
-        "Y": 10,
-        "Z": 50,
+        "X": 17,
+        "Y": 20,
+        "Z": 21,
     }
 
 
@@ -85,6 +85,7 @@ def apply_mixed_group_offers(items_counts):
                 del items_counts[item]
 
     print("items_counts", items_counts)
+    print("groups", groups)
     return groups, items_counts
 
 
@@ -140,4 +141,5 @@ def checkout(skus):
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
 
