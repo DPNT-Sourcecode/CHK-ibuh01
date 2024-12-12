@@ -74,9 +74,13 @@ def apply_mixed_group_offers(items_counts):
     for item in available_items[groups*3:]:
         remaining_items[item] = remaining_items.get(item, 0) + 1
 
-    # remove items from items_counts
-    for item in remaining_items:
-        items_counts[item] = items_counts.get(item, 0) - remaining_items[item]
+    # update items_counts
+    for item in group_items:
+        if item in items_counts:
+            if item in remaining_items:
+                items_counts[item] = remaining_items[item]
+            else:
+                del items_counts[item]
 
     return groups, items_counts
 
@@ -125,11 +129,13 @@ def checkout(skus):
 
     # handle mixed group offers
     groups, items_counts = apply_mixed_group_offers(items_counts)
+    total += groups * 45
 
     total = 0
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
 
 
 
