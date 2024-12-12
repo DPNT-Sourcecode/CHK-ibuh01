@@ -56,6 +56,10 @@ def apply_free_items(item_counts):
     return item_counts
 
 
+def apply_mixed_group_offers(items_counts):
+    pass
+
+
 def calculate_group_offers(item, count):
     group_offers = {
         "A": [(5, 200), (3, 130)],
@@ -98,7 +102,11 @@ def checkout(skus):
     items_counts = Counter(skus)
     items_counts = apply_free_items(items_counts)
 
+    # handle mixed group offers
+    groups, items_counts = apply_mixed_group_offers(items_counts)
+
     total = 0
     for item, count in items_counts.items():
         total += calculate_group_offers(item, count)
     return total
+
