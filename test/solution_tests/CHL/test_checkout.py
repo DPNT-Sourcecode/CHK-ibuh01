@@ -60,6 +60,3 @@ def test_two_combinations():
 def test_edge_cases():
     assert checkout("AAAAAAAA") == 330  # 5A for 200 + 3A for 130
     assert checkout("EEEEBBB") == 190  # 4E = 160, two B free, pay for one B
-
-
-
